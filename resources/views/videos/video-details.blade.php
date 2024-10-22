@@ -22,12 +22,6 @@
             </div>
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                 <div class="tm-bg-gray tm-video-details">
-                    <p class="mb-4">
-                        Aliquam varius posuere nunc, nec imperdiet neque condimentum at. Orci varius natoque penatibus et
-                        magnis dis parturient montes, nascetur ridiculus mus. Please support us by contributing <a
-                            href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a small donation</a> via
-                        PayPal.
-                    </p>
                     <div class="text-center mb-5">
                         <a href="#" class="btn btn-primary tm-btn-big">Download</a>
                     </div>

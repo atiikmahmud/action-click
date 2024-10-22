@@ -159,6 +159,6 @@
                     <span>11,300 views</span>
                 </div>
             </div>
-        </div> <!-- row -->
+        </div>
     </div>
 @endsection
