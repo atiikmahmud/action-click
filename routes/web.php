@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',         [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/photo-details', [HomeController::class, 'photoDetails'])->name('photo.details');
 
-Route::get('/videos',   [VideoController::class, 'index'])->name('video.index');
+Route::get('/videos', [VideoController::class, 'index'])->name('video.index');
 Route::get('/video-details', [VideoController::class, 'videoDetails'])->name('video.details');
 
-Route::get('/about',    [AboutController::class, 'index'])->name('about.index');
-Route::get('/contact',  [ContactController::class, 'index'])->name('contact.index');
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('/terms-and-conditions', [OthersController::class, 'termsAndConditions'])->name('trems.conditions');
 Route::get('/privacy-policy', [OthersController::class, 'privacyPolicy'])->name('privacy.policy');
