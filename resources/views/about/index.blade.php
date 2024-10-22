@@ -7,7 +7,7 @@
     <div class="container-fluid tm-mt-60">
         <div class="row mb-4">
             <h2 class="col-12 tm-text-primary">
-                About Action Click
+                About {{ env('APP_NAME') }}
             </h2>
         </div>
         <div class="row tm-mb-74 tm-row-1640">

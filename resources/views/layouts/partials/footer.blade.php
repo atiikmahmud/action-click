@@ -2,7 +2,7 @@
     <div class="container-fluid tm-container-small">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12 px-5 mb-5">
-                <h3 class="tm-text-primary mb-4 tm-footer-title">About Action Click</h3>
+                <h3 class="tm-text-primary mb-4 tm-footer-title">About {{ env('APP_NAME') }}</h3>
                 <p>Discover the captivating beauty of Bangladesh through our stunning nature photography and videography.</p>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-5">
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="col-lg-8 col-md-7 col-12 px-5 mb-3">
-                Copyright 2024 Action Click. All rights reserved.
+                Copyright 2024 {{ env('APP_NAME') }}. All rights reserved.
             </div>
             <div class="col-lg-4 col-md-5 col-12 px-5 text-right">
                 Designed by <a href="https://atiikmahmud.github.io/" class="tm-text-gray" rel="sponsored" target="_parent">Atik Mahmud</a>

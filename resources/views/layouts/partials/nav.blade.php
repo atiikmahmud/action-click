@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home.index') }}">
             <i class="fas fa-film mr-2"></i>
-            Action Click
+            {{ env('APP_NAME') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
