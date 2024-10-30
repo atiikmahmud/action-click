@@ -6,6 +6,9 @@
 
 <title>@yield('title') - {{ env('APP_NAME') }}</title>
 
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{{ asset('admin-assets/img/favicon/favicon.ico') }}" />
+
 <!-- Helpers -->
 <script src="{{ asset('admin-assets/vendor/js/helpers.js') }}"></script>
 <script src="{{ asset('admin-assets/js/config.js') }}"></script>
