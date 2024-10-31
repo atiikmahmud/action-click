@@ -74,7 +74,7 @@
 
                         <p class="text-center mb-5">
                             <span>New on our platform?</span>
-                            <a href="auth-register-basic.html">
+                            <a href="{{ route('register') }}">
                                 <span>Create an account</span>
                             </a>
                         </p>
