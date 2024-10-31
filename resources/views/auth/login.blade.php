@@ -83,7 +83,7 @@
                                     <img src="{{ asset('admin-assets/img/logo/logo.png') }}" alt="" height="30" width="30">
                                 </span>
                             </span>
-                            <span class="app-brand-text demo text-heading fw-semibold">{{ env('APP_NAME') }}</span>
+                            <span class="app-brand-text demo text-heading fw-semibold mt-1">{{ env('APP_NAME') }}</span>
                         </a>
                     </div>
                     <!-- /Logo -->

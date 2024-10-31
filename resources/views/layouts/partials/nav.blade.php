@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home.index') }}">
-            <i class="fas fa-film mr-2"></i>
+            <img src="{{ asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="35" width="35">
             {{ env('APP_NAME') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
