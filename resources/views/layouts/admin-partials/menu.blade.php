@@ -17,5 +17,35 @@
                 <div>Dashboard</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons ri-folder-image-line"></i>
+                <div>Photos</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons ri-movie-line"></i>
+                <div>Videos</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons ri-discuss-line"></i>
+                <div>Contacts</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons ri-group-line"></i>
+                <div>Users</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons ri-settings-5-line"></i>
+                <div>Settings</div>
+            </a>
+        </li>
     </ul>
 </aside>
