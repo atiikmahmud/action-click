@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/photo-details', [HomeController::class, 'photoDetails'])->name('photo.details');
@@ -31,6 +33,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 Route::get('/terms-and-conditions', [OthersController::class, 'termsAndConditions'])->name('trems.conditions');
 Route::get('/privacy-policy', [OthersController::class, 'privacyPolicy'])->name('privacy.policy');
 
-Auth::routes();
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::middleware(['auth'])->prefix('dashboard')->group(function(){
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+});

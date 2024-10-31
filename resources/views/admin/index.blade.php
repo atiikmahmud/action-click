@@ -17,7 +17,7 @@
                             <p class="mb-2">78% of target 🚀</p>
                             <a href="javascript:;" class="btn btn-sm btn-primary">View Sales</a>
                         </div>
-                        <img src="admin-assets/img/illustrations/trophy.png"
+                        <img src="{{ asset('admin-assets/img/illustrations/trophy.png') }}"
                             class="position-absolute bottom-0 end-0 me-5 mb-5" width="83" alt="view sales" />
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                             <ul class="p-0 m-0">
                                 <li class="d-flex mb-6">
                                     <div class="avatar flex-shrink-0 bg-lightest rounded me-3">
-                                        <img src="admin-assets/img/icons/misc/zipcar.png" alt="zipcar" />
+                                        <img src="{{ asset('admin-assets/img/icons/misc/zipcar.png') }}" alt="zipcar" />
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
@@ -190,7 +190,7 @@
                                 </li>
                                 <li class="d-flex mb-6">
                                     <div class="avatar flex-shrink-0 bg-lightest rounded me-3">
-                                        <img src="admin-assets/img/icons/misc/bitbank.png" alt="bitbank" />
+                                        <img src="{{ asset('admin-assets/img/icons/misc/bitbank.png') }}" alt="bitbank" />
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
@@ -208,7 +208,7 @@
                                 </li>
                                 <li class="d-flex">
                                     <div class="avatar flex-shrink-0 bg-lightest rounded me-3">
-                                        <img src="admin-assets/img/icons/misc/aviato.png" alt="aviato" />
+                                        <img src="{{ asset('admin-assets/img/icons/misc/aviato.png') }}" alt="aviato" />
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
@@ -460,7 +460,7 @@
                                     <ul class="p-0 m-0">
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/payments/gumroad.png" class="img-fluid"
+                                                <img src="{{ asset('admin-assets/img/icons/payments/gumroad.png') }}" class="img-fluid"
                                                     alt="gumroad" height="30" width="30" />
                                             </div>
                                             <div
@@ -474,7 +474,7 @@
                                         </li>
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/payments/mastercard-2.png"
+                                                <img src="{{ asset('admin-assets/img/icons/payments/mastercard-2.png') }}"
                                                     class="img-fluid" alt="mastercard" height="30" width="30" />
                                             </div>
                                             <div
@@ -488,7 +488,7 @@
                                         </li>
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/payments/stripes.png" class="img-fluid"
+                                                <img src="{{ asset('admin-assets/img/icons/payments/stripes.png') }}" class="img-fluid"
                                                     alt="stripes" height="30" width="30" />
                                             </div>
                                             <div
@@ -502,7 +502,7 @@
                                         </li>
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/payments/american-bank.png"
+                                                <img src="{{ asset('admin-assets/img/icons/payments/american-bank.png') }}"
                                                     class="img-fluid" alt="american" height="30" width="30" />
                                             </div>
                                             <div
@@ -516,7 +516,7 @@
                                         </li>
                                         <li class="d-flex align-items-center">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/payments/citi.png" class="img-fluid"
+                                                <img src="{{ asset('admin-assets/img/icons/payments/citi.png') }}" class="img-fluid"
                                                     alt="citi" height="30" width="30" />
                                             </div>
                                             <div
@@ -542,7 +542,7 @@
                                     <ul class="p-0 m-0">
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/brands/google.png" class="img-fluid"
+                                                <img src="{{ asset('admin-assets/img/icons/brands/google.png') }}" class="img-fluid"
                                                     alt="google" height="30" width="30" />
                                             </div>
                                             <div
@@ -556,7 +556,7 @@
                                         </li>
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/brands/github.png" class="img-fluid"
+                                                <img src="{{ asset('admin-assets/img/icons/brands/github.png') }}" class="img-fluid"
                                                     alt="github" height="30" width="30" />
                                             </div>
                                             <div
@@ -570,7 +570,7 @@
                                         </li>
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/brands/slack.png" class="img-fluid"
+                                                <img src="{{ asset('admin-assets/img/icons/brands/slack.png') }}" class="img-fluid"
                                                     alt="slack" height="30" width="30" />
                                             </div>
                                             <div
@@ -584,7 +584,7 @@
                                         </li>
                                         <li class="d-flex mb-4 align-items-center pb-2">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/payments/digital-ocean.png"
+                                                <img src="{{ asset('admin-assets/img/icons/payments/digital-ocean.png') }}"
                                                     class="img-fluid" alt="digital" height="30" width="30" />
                                             </div>
                                             <div
@@ -598,7 +598,7 @@
                                         </li>
                                         <li class="d-flex align-items-center">
                                             <div class="flex-shrink-0 me-4">
-                                                <img src="admin-assets/img/icons/brands/aws.png" class="img-fluid"
+                                                <img src="{{ asset('admin-assets/img/icons/brands/aws.png') }}" class="img-fluid"
                                                     alt="aws" height="30" width="30" />
                                             </div>
                                             <div
@@ -636,7 +636,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/1.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/1.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>
@@ -659,7 +659,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/3.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/3.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>
@@ -682,7 +682,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/2.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/2.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>
@@ -705,7 +705,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/5.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/5.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>
@@ -728,7 +728,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/4.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/4.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>
@@ -751,7 +751,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/7.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/7.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>
@@ -774,7 +774,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/6.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/6.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>
@@ -797,7 +797,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-sm me-4">
-                                                    <img src="admin-assets/img/avatars/1.png" alt="Avatar"
+                                                    <img src="{{ asset('admin-assets/img/avatars/1.png') }}" alt="Avatar"
                                                         class="rounded-circle" />
                                                 </div>
                                                 <div>

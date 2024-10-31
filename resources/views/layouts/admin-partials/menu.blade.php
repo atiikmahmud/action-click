@@ -11,7 +11,7 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item active">
+        <li class="menu-item @if ($title == 'Dashboard') active @endif">
             <a href="{{ route('admin.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ri-home-smile-line"></i>
                 <div>Dashboard</div>
@@ -35,8 +35,8 @@
                 <div>Contacts</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if ($title == 'Users') active @endif">
+            <a href="{{ route('users.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ri-group-line"></i>
                 <div>Users</div>
             </a>
