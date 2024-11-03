@@ -24,7 +24,7 @@
                                         <span class="d-none d-sm-block">Reset</span>
                                     </button>
 
-                                    <div>Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                    <div>Allowed JPG, JPEG or PNG. Max size of 1024K</div>
                                 </div>
                             </div>
                         </div>
@@ -33,28 +33,21 @@
                                 <div class="row mt-1 g-5">
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
-                                            <input class="form-control" type="text" id="firstName" name="firstName"
+                                            <input class="form-control" type="text" id="firstName" name="firstName" value="{{ $user->name }}"
                                                 placeholder="John" autofocus />
                                             <label for="firstName">First Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
-                                            <input class="form-control" type="text" name="lastName" id="lastName"
-                                                placeholder="Doe" />
-                                            <label for="lastName">Last Name</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating form-floating-outline">
-                                            <input class="form-control" type="text" id="email" name="email" placeholder="john.doe@example.com" />
+                                            <input class="form-control" type="text" id="email" name="email" value="{{ $user->email }}" placeholder="john.doe@example.com" />
                                             <label for="email">E-mail</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-group input-group-merge">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="phoneNumber" name="phoneNumber"
+                                                <input type="text" id="phoneNumber" name="phone" value="{{ $user->phone }}" 
                                                     class="form-control" placeholder="01700123456" />
                                                 <label for="phoneNumber">Phone Number</label>
                                             </div>
@@ -65,41 +58,44 @@
                                         <div class="form-floating form-floating-outline">
                                             <select id="country" class="select2 form-select">
                                                 <option value="">Select Role</option>
-                                                <option value="admin">Admin</option>
-                                                <option value="user">User</option>
+                                                <option value="admin" @if ($user->role == 'admin') selected @endif>Admin</option>
+                                                <option value="user" @if ($user->role == 'user') selected @endif>User</option>
                                             </select>
                                             <label for="country">Role</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    
+                                    <div class="col-md-12">
                                         <div class="form-floating form-floating-outline">
-                                            <select id="language" class="select2 form-select">
-                                                <option value="">Select Status</option>
-                                                <option value="active">Active</option>
-                                                <option value="disable">Disable</option>
-                                            </select>
-                                            <label for="language">Status</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating form-floating-outline">
-                                            <input type="text" class="form-control" id="address" name="address"
+                                            <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}"
                                                 placeholder="Address" />
                                             <label for="address">Address</label>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
-                                            <input class="form-control" type="text" id="state" name="state"
+                                            <input class="form-control" type="text" id="state" name="state" value="{{ $user->state }}"
                                                 placeholder="Dhaka" />
                                             <label for="state">State</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
-                                            <input type="text" class="form-control" id="zipCode" name="zipCode"
+                                            <input type="text" class="form-control" id="zipCode" name="zip_code" value="{{ $user->zip_code }}" 
                                                 placeholder="1200" maxlength="6" />
                                             <label for="zipCode">Zip Code</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating form-floating-outline">
+                                            <select id="language" class="select2 form-select">
+                                                <option value="">Select Status</option>
+                                                <option value="1" @if ($user->status == 1) selected @endif>Active</option>
+                                                <option value="0" @if ($user->status == 0) selected @endif>Disable</option>
+                                            </select>
+                                            <label for="language">Status</label>
                                         </div>
                                     </div>
                                     
@@ -127,12 +123,14 @@
                                 </div>
                                 <div class="mt-6">
                                     <button type="submit" class="btn btn-primary me-3">Save changes</button>
-                                    <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                    <a href="{{ route('user.profile') }}" class="btn btn-outline-secondary">Reset</a>
                                 </div>
                             </form>
                         </div>
                         <!-- /Account -->
                     </div>
+
+                    @if ($user->id !== 1 || $user->role !== 'admin')
                     <div class="card">
                         <h5 class="card-header">Delete Account</h5>
                         <div class="card-body">
@@ -149,6 +147,7 @@
                             </form>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

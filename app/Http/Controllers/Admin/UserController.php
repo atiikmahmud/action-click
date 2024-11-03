@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,6 +17,8 @@ class UserController extends Controller
     public function userProfile()
     {
         $title = 'Profile';
-        return view('admin.users.profile', compact('title'));
+        $user = User::find(Auth()->user()->id);
+        // dd($user->toArray());
+        return view('admin.users.profile', compact('title', 'user'));
     }
 }
