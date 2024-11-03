@@ -33,80 +33,53 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            <tr>
-                                <td>01</td>
-                                <td>Atik Mahmud</td>
-                                <td>atik@test.com</td>
-                                <td><span class="badge rounded-pill bg-label-info me-1" title="Admin"><i
-                                            class="ri-admin-line"></i></span></td>
-                                <td><span class="badge rounded-pill bg-label-success me-1">Active</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ri-more-2-line"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-user-search-line me-1"></i> Details</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-pencil-line me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-delete-bin-6-line me-1"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>Adib Mahmud</td>
-                                <td>adib@test.com</td>
-                                <td><span class="badge rounded-pill bg-label-primary me-1" title="User"><i
-                                            class="ri-user-3-line"></i></span></td>
-                                <td><span class="badge rounded-pill bg-label-success me-1">Active</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ri-more-2-line"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-user-search-line me-1"></i> Details</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-pencil-line me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-delete-bin-6-line me-1"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>AB Rahim</td>
-                                <td>abrahim@test.com</td>
-                                <td><span class="badge rounded-pill bg-label-primary me-1" title="User"><i
-                                            class="ri-user-3-line"></i></span></td>
-                                <td><span class="badge rounded-pill bg-label-danger me-1">Disable</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ri-more-2-line"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-user-search-line me-1"></i> Details</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-pencil-line me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ri-delete-bin-6-line me-1"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            @if (count($users) > 0)
+                                @foreach ($users as $index => $user)
+                                    <tr>
+                                        <td>{{ $index + $users->firstItem() }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            @if ($user->role == 'admin')
+                                                <span class="badge rounded-pill bg-label-info me-1" title="Admin"><i
+                                                        class="ri-admin-line"></i></span>
+                                            @else
+                                                <span class="badge rounded-pill bg-label-primary me-1" title="User"><i
+                                                        class="ri-user-3-line"></i></span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($user->status == 1)
+                                                <span class="badge rounded-pill bg-label-success me-1">Active</span>
+                                            @else
+                                                <span class="badge rounded-pill bg-label-danger me-1">Disable</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                    data-bs-toggle="dropdown">
+                                                    <i class="ri-more-2-line"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                            class="ri-user-search-line me-1"></i> Details</a>
+                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                            class="ri-pencil-line me-1"></i> Edit</a>
+                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                            class="ri-delete-bin-6-line me-1"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                            @endif
                         </tbody>
                     </table>
+                    <div class="mt-5">
+                        {{ $users->links() }}
+                    </div>
                 </div>
             </div>
             <!-- End Basic Bootstrap Table -->
