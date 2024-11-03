@@ -16,9 +16,19 @@ class UserController extends Controller
 
     public function userProfile()
     {
-        $title = 'Profile';
+        $title = 'User Profile';
         $user = User::find(Auth()->user()->id);
-        // dd($user->toArray());
         return view('admin.users.profile', compact('title', 'user'));
+    }
+
+    public function addUser()
+    {
+        $title = 'Add New User';
+        return view('admin.users.add-user', compact('title'));
+    }
+
+    public function storeUser(Request $request)
+    {
+        dd($request->all());
     }
 }

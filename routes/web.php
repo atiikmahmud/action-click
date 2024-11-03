@@ -37,6 +37,8 @@ Route::get('/privacy-policy', [OthersController::class, 'privacyPolicy'])->name(
 Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/user-profile', [UserController::class, 'userProfile'])->name('user.profile');
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/user-profile', [UserController::class, 'userProfile'])->name('admin.user.profile');
+    Route::get('/add-user', [UserController::class, 'addUser'])->name('admin.user.add');
+    Route::post('/store-user', [UserController::class, 'storeUser'])->name('admin.user.store');
 });

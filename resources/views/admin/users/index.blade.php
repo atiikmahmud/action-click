@@ -9,9 +9,9 @@
                 <div class="d-flex justify-content-between">
                     <h5 class="card-header">Users</h5>
                     <h5 class="card-header">
-                        <button type="button" class="btn btn-primary">
+                        <a href="{{ route('admin.user.add') }}" class="btn btn-primary">
                             <span class="tf-icons ri-add-circle-line ri-16px me-1_5"></span>Add User
-                        </button>
+                        </a>
                     </h5>
                 </div>
                 <div class="table-responsive text-nowrap">

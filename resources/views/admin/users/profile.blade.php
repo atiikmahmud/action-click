@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="mt-6">
                                     <button type="submit" class="btn btn-primary me-3">Save changes</button>
-                                    <a href="{{ route('user.profile') }}" class="btn btn-outline-secondary">Reset</a>
+                                    <a href="{{ route('admin.user.profile') }}" class="btn btn-outline-secondary">Reset</a>
                                 </div>
                             </form>
                         </div>

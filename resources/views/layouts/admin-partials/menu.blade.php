@@ -35,8 +35,8 @@
                 <div>Contacts</div>
             </a>
         </li>
-        <li class="menu-item @if ($title == 'Users' || $title == 'Profile') active @endif">
-            <a href="{{ route('users.index') }}" class="menu-link">
+        <li class="menu-item @if ($title == 'Users' || $title == 'Profile' || $title == 'Add New User') active @endif">
+            <a href="{{ route('admin.users.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ri-group-line"></i>
                 <div>Users</div>
             </a>
