@@ -28,6 +28,14 @@
                                         </label>
 
                                         <div>Allowed JPG, JPEG or PNG. Max size of 1024K</div>
+
+                                        @error('image')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -36,36 +44,64 @@
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input class="form-control" type="text" id="name" name="name"
-                                                placeholder="John" autofocus />
+                                                placeholder="John" autofocus required/>
                                             <label for="name">Name</label>
                                         </div>
+                                        @error('name')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input class="form-control" type="email" id="email" name="email"
-                                                placeholder="john.doe@example.com" />
+                                                placeholder="john.doe@example.com" required/>
                                             <label for="email">E-mail</label>
                                         </div>
+                                        @error('email')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-group input-group-merge">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="phone" name="phone" class="form-control"
-                                                    placeholder="01700123456" maxlength="11" />
+                                                    placeholder="01700123456" minlength="11" maxlength="11" required/>
                                                 <label for="phone">Phone Number</label>
                                             </div>
                                             <span class="input-group-text">BD (+88)</span>
                                         </div>
+                                        @error('phone')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
-                                            <select id="country" class="select2 form-select">
+                                            <select id="role" name="role" class="select2 form-select" required>
                                                 <option value="">Select Role</option>
                                                 <option value="admin">Admin</option>
                                                 <option value="user">User</option>
                                             </select>
-                                            <label for="country">Role</label>
+                                            <label for="role">Role</label>
                                         </div>
+                                        @error('role')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <div class="col-md-6">
@@ -74,6 +110,13 @@
                                                 placeholder="Address" />
                                             <label for="address">Address</label>
                                         </div>
+                                        @error('address')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <div class="col-md-6">
@@ -82,6 +125,13 @@
                                                 placeholder="Dhaka" />
                                             <label for="state">State</label>
                                         </div>
+                                        @error('state')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
@@ -89,31 +139,59 @@
                                                 placeholder="1200" maxlength="4" />
                                             <label for="zip_code">Zip Code</label>
                                         </div>
+                                        @error('zip_code')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
-                                            <select id="language" class="select2 form-select">
+                                            <select id="status" name="status" class="select2 form-select" required>
                                                 <option value="">Select Status</option>
                                                 <option value="1">Active</option>
                                                 <option value="0">Disable</option>
                                             </select>
                                             <label for="language">Status</label>
                                         </div>
+                                        @error('status')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-floating form-floating-outline">
+                                        <div class="form-floating form-floating-outline" required>
                                             <input class="form-control" type="password" id="password" name="password"
                                                 placeholder="********" minlength="8" />
-                                            <label for="state">New Password</label>
+                                            <label for="state">Password</label>
                                         </div>
+                                        @error('password')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input type="password" class="form-control" id="password_confirmation"
-                                                name="password_confirmation" placeholder="********" minlength="8" />
+                                                name="password_confirmation" placeholder="********" minlength="8" required/>
                                             <label for="zipCode">Confirm Password</label>
                                         </div>
+                                        @error('password_confirmation')
+                                            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="mt-6">
