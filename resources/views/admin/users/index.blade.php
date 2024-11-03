@@ -41,6 +41,8 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="javascript:void(0);"><i
+                                                class="ri-user-search-line me-1"></i> Details</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
                                                     class="ri-pencil-line me-1"></i> Edit</a>
                                             <a class="dropdown-item" href="javascript:void(0);"><i
                                                     class="ri-delete-bin-6-line me-1"></i> Delete</a>
@@ -62,6 +64,8 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="javascript:void(0);"><i
+                                                class="ri-user-search-line me-1"></i> Details</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
                                                     class="ri-pencil-line me-1"></i> Edit</a>
                                             <a class="dropdown-item" href="javascript:void(0);"><i
                                                     class="ri-delete-bin-6-line me-1"></i> Delete</a>
@@ -82,6 +86,8 @@
                                             <i class="ri-more-2-line"></i>
                                         </button>
                                         <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                class="ri-user-search-line me-1"></i> Details</a>
                                             <a class="dropdown-item" href="javascript:void(0);"><i
                                                     class="ri-pencil-line me-1"></i> Edit</a>
                                             <a class="dropdown-item" href="javascript:void(0);"><i

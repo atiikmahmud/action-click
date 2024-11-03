@@ -12,4 +12,10 @@ class UserController extends Controller
         $title = 'Users';
         return view('admin.users.index', compact('title'));
     }
+
+    public function userProfile()
+    {
+        $title = 'Profile';
+        return view('admin.users.profile', compact('title'));
+    }
 }
