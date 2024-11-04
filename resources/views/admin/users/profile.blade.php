@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 @if (Session::has('success'))
-                    <div class="alert alert-success alert-dismissible" role="alert">
+                    <div class="alert alert-primary alert-dismissible" role="alert">
                         {{ Session::get('success') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
@@ -76,10 +76,13 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-floating form-floating-outline">
-                                        <input class="form-control" type="email" value="{{ $user->email }}"
-                                            placeholder="john.doe@example.com" disabled />
-                                        <label for="email">E-mail</label>
+                                    <div class="input-group input-group-merge">
+                                        <div class="form-floating form-floating-outline">
+                                            <input class="form-control" type="email" value="{{ $user->email }}"
+                                                placeholder="john.doe@example.com" />
+                                            <label for="email">E-mail</label>
+                                        </div>
+                                        <span class="input-group-text">(NO CHANGE)</span>
                                     </div>
                                     @error('email')
                                         <div class="alert alert-danger alert-dismissible mt-2" role="alert">
@@ -109,12 +112,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating form-floating-outline">
-                                        <select class="select2 form-select" disabled>
-                                            <option value="">Select Role</option>
-                                            <option value="admin" @if ($user->role == 'admin') selected @endif>
-                                                Admin</option>
-                                            <option value="user" @if ($user->role == 'user') selected @endif>
-                                                User</option>
+                                        <select class="select2 form-select">
+                                            <option value="" class="text-captalize">{{ ucfirst($user->role) }}
+                                            </option>
                                         </select>
                                         <label for="role">Role</label>
                                     </div>
@@ -230,14 +230,17 @@
                     <div class="card">
                         <h5 class="card-header">Delete Account</h5>
                         <div class="card-body">
-                            <form id="formAccountDeactivation" onsubmit="return false">
+                            <form id="formAccountDeactivation" action="{{ route('user.disabled') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $user->id }}">
                                 <div class="form-check mb-6 ms-3">
                                     <input class="form-check-input" type="checkbox" name="accountActivation"
-                                        id="accountActivation" />
+                                        id="accountActivation" required />
                                     <label class="form-check-label" for="accountActivation">I confirm my account
                                         deactivation</label>
                                 </div>
-                                <button type="submit" class="btn btn-danger deactivate-account" disabled="disabled">
+                                <button type="submit" id="accountActivationBtn"
+                                    class="btn btn-danger deactivate-account" disabled="disabled" onclick="return confirm('Are you sure, deactive your account ?')">
                                     Deactivate Account
                                 </button>
                             </form>
@@ -258,6 +261,14 @@
                 if (file) {
                     $("#imgpreview img").attr('src', URL.createObjectURL(file));
                     $("#imgpreview").show();
+                }
+            });
+
+            $("#accountActivation").change(function() {
+                if ($(this).is(":checked")) {
+                    $("#accountActivationBtn").prop("disabled", false);
+                } else {
+                    $("#accountActivationBtn").prop("disabled", true);
                 }
             });
         });

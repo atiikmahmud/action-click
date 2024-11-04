@@ -38,6 +38,15 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Your avatar removed successfully!');
     }
 
+    public function userDisable(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->status = 'disabled';
+        $user->save();
+        
+        return redirect()->back();
+    }
+
     public function addUser()
     {
         $title = 'Add New User';
