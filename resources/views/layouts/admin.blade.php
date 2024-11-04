@@ -18,14 +18,19 @@
 
             <!-- Layout container -->
             <div class="layout-page">
-                
+
                 <!-- Navbar -->
                 @include('layouts.admin-partials.nav')
                 <!-- End Navbar -->
+                <div class="content-wrapper">
+                    <!-- Main Content wrapper -->
+                    @yield('content')
+                    <!-- End Main Content wrapper -->
+                    @include('layouts.admin-partials.main-footer')
+                    <!-- End Main Footer -->
 
-                <!-- Main Content wrapper -->
-                @yield('content')
-                <!-- End Main Content wrapper -->
+                    <div class="content-backdrop fade"></div>
+                </div>
 
             </div>
             <!-- End Layout page -->

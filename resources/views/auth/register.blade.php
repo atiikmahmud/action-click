@@ -8,7 +8,7 @@
                 <div class="card p-7">
                     <!-- Logo -->
                     <div class="app-brand justify-content-center mt-5">
-                        <a href="{{ route('admin.index') }}" class="app-brand-link gap-3">
+                        <a href="{{ route('home.index') }}" class="app-brand-link gap-3">
                             <span class="app-brand-logo demo">
                                 <span>
                                     <img src="{{ asset('admin-assets/img/logo/logo.png') }}" alt="" height="30"

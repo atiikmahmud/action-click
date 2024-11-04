@@ -77,7 +77,7 @@
                     </li>
                 </ul>
             </li>
-            <!--/ User -->
+            <!-- End User -->
         </ul>
     </div>
 </nav>

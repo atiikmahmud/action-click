@@ -17,8 +17,8 @@ class AddColumnToUsersTable extends Migration
             $table->string('zip_code')->nullable()->after('password');
             $table->string('state')->nullable()->after('password');
             $table->string('address')->nullable()->after('password');
-            $table->boolean('status')->default(false)->after('password');
-            $table->string('role')->default('user')->after('password');
+            $table->enum('status', ['active', 'disabled', 'inactive'])->default('inactive')->after('password');
+            $table->enum('role', ['admin', 'user'])->default('user')->after('password');
             $table->string('phone')->nullable()->after('password');
             $table->string('image')->nullable()->after('password');
         });

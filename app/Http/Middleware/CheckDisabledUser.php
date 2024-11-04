@@ -17,17 +17,23 @@ class CheckDisabledUser
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check() && (auth()->user()->status == 0)){
-            Auth::logout();
 
-            $request->session()->invalidate();
-
-            $request->session()->regenerateToken();
-
-            return redirect()->route('login')->with('error', 'Your account is disabled, contact with admin.');
+        if (auth()->check() && (auth()->user()->status !== 'active'))
+        {
+            if (auth()->user()->status == 'inactive') {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect()->route('login')->with('error', 'Your account is created but not approved, please contact with admin.');
+            }else{
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect()->route('login')->with('error', 'Your account is disabled, please contact with admin.');
+            }
 
         }
-        
+
         return $next($request);
     }
 }
