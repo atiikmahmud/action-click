@@ -78,11 +78,14 @@
                                     </tr>
                                 @endforeach
                             @else
+                                <tr>
+                                    <td class="text-center" colspan="6">User List Empty...</td>
+                                </tr>
                             @endif
                         </tbody>
                     </table>
                     <div class="mt-5">
-                        {{ $users->links() }}
+                        {{ $users->links('vendor.pagination.default') }}
                     </div>
                 </div>
             </div>

@@ -39,6 +39,8 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
 
     Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('/user-profile', [UserController::class, 'userProfile'])->name('admin.user.profile');
+    Route::get('/user-avatar-remove/{id}', [UserController::class, 'userAvatarsRemove'])->name('user.avatar.remove');
     Route::get('/add-user', [UserController::class, 'addUser'])->name('admin.user.add');
     Route::post('/store-user', [UserController::class, 'storeUser'])->name('admin.user.store');
+    Route::post('/update-user', [UserController::class, 'userProfileUpdate'])->name('admin.user.update');
 });

@@ -6,6 +6,18 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
                 <div class="col-md-12">
+                    @if (Session::has('success'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            {{ Session::get('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (Session::has('error'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            {{ Session::get('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="card mb-6">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-header">Add New User</h5>
@@ -44,7 +56,7 @@
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input class="form-control" type="text" id="name" name="name"
-                                                placeholder="John" autofocus required/>
+                                                placeholder="John" autofocus required />
                                             <label for="name">Name</label>
                                         </div>
                                         @error('name')
@@ -58,7 +70,7 @@
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input class="form-control" type="email" id="email" name="email"
-                                                placeholder="john.doe@example.com" required/>
+                                                placeholder="john.doe@example.com" required />
                                             <label for="email">E-mail</label>
                                         </div>
                                         @error('email')
@@ -73,7 +85,7 @@
                                         <div class="input-group input-group-merge">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="phone" name="phone" class="form-control"
-                                                    placeholder="01700123456" minlength="11" maxlength="11" required/>
+                                                    placeholder="01700123456" minlength="11" maxlength="11" required />
                                                 <label for="phone">Phone Number</label>
                                             </div>
                                             <span class="input-group-text">BD (+88)</span>
@@ -182,7 +194,8 @@
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input type="password" class="form-control" id="password_confirmation"
-                                                name="password_confirmation" placeholder="********" minlength="8" required/>
+                                                name="password_confirmation" placeholder="********" minlength="8"
+                                                required />
                                             <label for="zipCode">Confirm Password</label>
                                         </div>
                                         @error('password_confirmation')
@@ -195,7 +208,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-6">
-                                    <button type="submit" class="btn btn-primary me-3">Submit</button>
+                                    <button type="submit" class="btn btn-primary me-3">Save</button>
                                     <a href="{{ route('admin.user.add') }}" class="btn btn-outline-secondary">Reset</a>
                                 </div>
                             </div>
