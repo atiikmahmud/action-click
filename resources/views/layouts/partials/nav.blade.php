@@ -22,6 +22,9 @@
                 <li class="nav-item">
                     <a class="nav-link nav-link-4 @if ($title == 'Contact') active" aria-current="page" @else " @endif href="{{ route('contact.index') }}">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-4" href="{{ route('login') }}">Login</a>
+                </li>
             </ul>
         </div>
     </div>

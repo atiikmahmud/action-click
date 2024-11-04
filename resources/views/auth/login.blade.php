@@ -27,6 +27,10 @@
                         <form id="formAuthentication" class="mb-5" action="{{ route('login') }}" method="POST">
                             @csrf
 
+                            @if (Session::has('error'))
+                                <p class="text-danger my-3">{{ Session::get('error') }}</p>
+                            @endif
+
                             @error('email')
                                 <p class="text-danger my-3">{{ $message }}</p>
                             @enderror
