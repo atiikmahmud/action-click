@@ -24,7 +24,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <th style="width: 5%">No.</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -37,7 +37,11 @@
                                 @foreach ($users as $index => $user)
                                     <tr>
                                         <td>{{ $index + $users->firstItem() }}</td>
-                                        <td>{{ $user->name }}</td>
+
+                                        <td><img src="{{ $user->image ? asset('admin-assets/img/avatars/' . $user->image) : asset('admin-assets/img/avatars/1.png') }}"
+                                                alt="{{ $user->name }}" class="w-px-40 h-auto rounded-circle" style="margin-right: 5px" />
+                                            <span>{{ $user->name }}</span>
+                                        </td>
                                         <td>{{ $user->email }}</td>
                                         <td>
                                             @if ($user->role == 'admin')
