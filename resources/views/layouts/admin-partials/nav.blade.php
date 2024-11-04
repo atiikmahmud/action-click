@@ -7,15 +7,17 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <!-- Search -->
-        <div class="navbar-nav align-items-center">
-            <div class="nav-item d-flex align-items-center">
-                <i class="ri-search-line ri-22px me-2"></i>
-                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                    aria-label="Search..." />
+        <div class="navbar-nav align-items-center mobile-view-logo">
+            <div class="app-brand demo">
+                <a href="{{ route('admin.index') }}" class="app-brand-link">
+                    <span class="app-brand-logo demo me-1">
+                        <img src="{{ asset('admin-assets/img/logo/logo.png') }}" alt="{{ env('APP_NAME') }}"
+                            height="35" width="35">
+                    </span>
+                    <span class="app-brand-text demo menu-text fw-semibold ms-2">{{ env('APP_NAME') }}</span>
+                </a>
             </div>
         </div>
-        <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
@@ -23,8 +25,8 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{ Auth::user()->image ? asset('admin-assets/img/avatars/' . Auth::user()->image) : asset('admin-assets/img/avatars/1.png') }}" alt="{{ Auth::user()->name }}"
-                            class="w-px-40 h-auto rounded-circle" />
+                        <img src="{{ Auth::user()->image ? asset('admin-assets/img/avatars/' . Auth::user()->image) : asset('admin-assets/img/avatars/1.png') }}"
+                            alt="{{ Auth::user()->name }}" class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">
@@ -33,8 +35,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0 me-2">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ Auth::user()->image ? asset('admin-assets/img/avatars/' . Auth::user()->image) : asset('admin-assets/img/avatars/1.png') }}" alt="{{ Auth::user()->name }}"
-                                            class="w-px-40 h-auto rounded-circle" />
+                                        <img src="{{ Auth::user()->image ? asset('admin-assets/img/avatars/' . Auth::user()->image) : asset('admin-assets/img/avatars/1.png') }}"
+                                            alt="{{ Auth::user()->name }}" class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">

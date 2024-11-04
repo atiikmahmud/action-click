@@ -7,6 +7,13 @@
         <div class="card">
             <div class="d-flex justify-content-between">
                 <h5 class="card-header">Users</h5>
+                <!-- Search -->
+                <div class="nav-item d-flex align-items-center desktop-search-view">
+                    <i class="ri-search-line ri-22px me-2"></i>
+                    <input type="search" class="form-control border-0 shadow-none" placeholder="Search..."
+                        aria-label="Search..." />
+                </div>
+                <!-- /Search -->
                 <h5 class="card-header">
                     <a href="{{ route('admin.user.add') }}" class="btn btn-primary">
                         <span class="tf-icons ri-add-circle-line ri-16px me-1_5"></span>Add User
