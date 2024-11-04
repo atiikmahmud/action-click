@@ -1,4 +1,5 @@
-<nav aria-label="Page navigation">
+<nav aria-label="Page navigation" class="d-flex justify-content-between px-4">
+    <p class="text-center mt-2">Showing {{ $paginator->firstItem() }} to {{ $paginator->lastItem() }} of {{ $paginator->total() }} results</p>
     <ul class="pagination justify-content-center">
         <li class="page-item {{ $paginator->onFirstPage() ? 'disabled' : '' }}">
             <a class="page-link" href="{{ $paginator->previousPageUrl() }}" aria-label="{{ __('pagination.previous') }}">
@@ -26,5 +27,4 @@
             </a>
         </li>
     </ul>
-    <p class="text-center">Showing {{ $paginator->firstItem() }} to {{ $paginator->lastItem() }} of {{ $paginator->total() }} results</p>
 </nav>
