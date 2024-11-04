@@ -8,6 +8,11 @@
                 <div class="card mb-6">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-header">Add New User</h5>
+                        <h5 class="card-header">
+                            <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
+                                <span class="tf-icons ri-arrow-go-back-line ri-16px me-1_5"></span>Back
+                            </a>
+                        </h5>
                     </div>
                     <!-- Account -->
                     <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">

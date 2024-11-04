@@ -9,6 +9,11 @@
                     <!-- Account -->
                     <div class="d-flex justify-content-between">
                         <h5 class="card-header">Your Profile</h5>
+                        <h5 class="card-header">
+                            <a href="{{ route('admin.index') }}" class="btn btn-primary">
+                                <span class="tf-icons ri-arrow-go-back-line ri-16px me-1_5"></span>Back
+                            </a>
+                        </h5>
                     </div>
                     <form action="{{ route('admin.user.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
