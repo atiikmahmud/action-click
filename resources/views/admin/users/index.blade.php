@@ -10,8 +10,11 @@
                 <!-- Search -->
                 <div class="nav-item d-flex align-items-center desktop-search-view">
                     <i class="ri-search-line ri-22px me-2"></i>
-                    <input type="search" class="form-control border-0 shadow-none" placeholder="Search..."
-                        aria-label="Search..." />
+                    <form action="{{ route("admin.users.index") }}" method="GET">
+                        <input type="search" name="search" value="{{ $search }}" class="form-control border-0 shadow-none" placeholder="Search..."
+                            aria-label="Search..." />
+                        <button type="submit" class="d-none">Submit</button>
+                    </form>
                 </div>
                 <!-- /Search -->
                 <h5 class="card-header">
@@ -69,7 +72,7 @@
                                                 <i class="ri-more-2-line"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                <a class="dropdown-item" href="{{ route('admin.user.profile.view', ['id' => $user->id]) }}"><i
                                                         class="ri-user-search-line me-1"></i> Details</a>
                                                 <a class="dropdown-item" href="javascript:void(0);"><i
                                                         class="ri-pencil-line me-1"></i> Edit</a>
@@ -88,7 +91,7 @@
                     </tbody>
                 </table>
                 <div class="mt-5">
-                    {{ $users->links('vendor.pagination.default') }}
+                    {{ $users->withQueryString()->links('vendor.pagination.default') }}
                 </div>
             </div>
         </div>

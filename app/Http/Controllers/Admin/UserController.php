@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Users';
-        $users = User::orderBy('created_at', 'ASC')->paginate(10);
-        return view('admin.users.index', compact('title', 'users'));
+        $search = $request->query('search');
+        $users = User::where(function ($query) use ($search) {
+            $query->where('name', 'LIKE', "%{$search}%");
+        })->orderBy('created_at', 'ASC')->paginate(10);
+        return view('admin.users.index', compact('title', 'users', 'search'));
     }
 
     public function userProfile()
@@ -155,5 +158,13 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Your profile updated successfully!');
+    }
+
+    public function viewUserProfile($id)
+    {
+        $user = User::find($id);
+        $title = $user->name . "'s Profile";
+        
+        return view('admin.users.view-user', compact('user', 'title'));
     }
 }

@@ -33,6 +33,7 @@ Route::get('/video-details', [VideoController::class, 'videoDetails'])->name('vi
 
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
 Route::get('/terms-and-conditions', [OthersController::class, 'termsAndConditions'])->name('trems.conditions');
 Route::get('/privacy-policy', [OthersController::class, 'privacyPolicy'])->name('privacy.policy');
 
@@ -47,4 +48,5 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('/add-user', [UserController::class, 'addUser'])->name('admin.user.add');
     Route::post('/store-user', [UserController::class, 'storeUser'])->name('admin.user.store');
     Route::post('/update-user', [UserController::class, 'userProfileUpdate'])->name('admin.user.update');
+    Route::get('/user-profile/{id}', [UserController::class, 'viewUserProfile'])->name('admin.user.profile.view');
 });
