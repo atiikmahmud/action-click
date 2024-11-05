@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\PhotoController as AdminPhotoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
@@ -52,4 +53,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('/edit-user-profile/{id}', [UserController::class, 'editUserProfile'])->name('admin.user.profile.edit');
     Route::post('/update-user-profile', [UserController::class, 'updateUserProfile'])->name('admin.user.profile.update');
     Route::delete('/delete-user-profile', [UserController::class, 'deleteUserProfile'])->name('admin.user.profile.delete');
+
+    Route::get('/photos', [AdminPhotoController::class, 'index'])->name('admin.photos.index');
 });

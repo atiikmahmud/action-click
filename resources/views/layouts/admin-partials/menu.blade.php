@@ -17,8 +17,8 @@
                 <div>Dashboard</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if ($title == 'Photos') active @endif">
+            <a href="{{ route('admin.photos.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ri-folder-image-line"></i>
                 <div>Photos</div>
             </a>
