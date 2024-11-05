@@ -74,7 +74,7 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="{{ route('admin.user.profile.view', ['id' => $user->id]) }}"><i
                                                         class="ri-user-search-line me-1"></i> Details</a>
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                <a class="dropdown-item" href="{{ route('admin.user.profile.edit', ['id' => $user->id]) }}"><i
                                                         class="ri-pencil-line me-1"></i> Edit</a>
                                                 <a class="dropdown-item" href="javascript:void(0);"><i
                                                         class="ri-delete-bin-6-line me-1"></i> Delete</a>

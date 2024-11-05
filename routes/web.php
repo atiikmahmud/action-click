@@ -49,4 +49,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::post('/store-user', [UserController::class, 'storeUser'])->name('admin.user.store');
     Route::post('/update-user', [UserController::class, 'userProfileUpdate'])->name('admin.user.update');
     Route::get('/user-profile/{id}', [UserController::class, 'viewUserProfile'])->name('admin.user.profile.view');
+    Route::get('/edit-user-profile/{id}', [UserController::class, 'editUserProfile'])->name('admin.user.profile.edit');
+    Route::post('/update-user-profile', [UserController::class, 'updateUserProfile'])->name('admin.user.profile.update');
 });
