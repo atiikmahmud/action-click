@@ -62,6 +62,12 @@
                         </a>
                     </li>
                     <li>
+                        <a class="dropdown-item" href="{{ route('home.index') }}">
+                            <i class="ri-pages-line ri-22px me-2"></i>
+                            <span class="align-middle">Visit Site</span>
+                        </a>
+                    </li>
+                    <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>

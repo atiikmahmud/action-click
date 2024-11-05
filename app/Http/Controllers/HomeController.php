@@ -11,10 +11,4 @@ class HomeController extends Controller
         $title = 'Home';
         return view('index', compact('title'));
     }
-
-    public function photoDetails()
-    {
-        $title = 'Photo Details';
-        return view('photo-details', compact('title'));
-    }
 }

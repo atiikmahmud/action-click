@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OthersController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/photo-details', [HomeController::class, 'photoDetails'])->name('photo.details');
+
+Route::get('/photos', [PhotoController::class, 'index'])->name('photo.index');
+Route::get('/photo-details', [PhotoController::class, 'photoDetails'])->name('photo.details');
 
 Route::get('/videos', [VideoController::class, 'index'])->name('video.index');
 Route::get('/video-details', [VideoController::class, 'videoDetails'])->name('video.details');
