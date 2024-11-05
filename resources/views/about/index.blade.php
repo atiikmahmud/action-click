@@ -3,6 +3,7 @@
 @section('content')
     <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll"
         data-image-src="{{ asset('assets/img/hero.jpg') }}">
+        <h3 class="text-light">{{ $title }}</h3>
     </div>
 
     <div class="container-fluid tm-mt-60">
