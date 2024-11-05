@@ -8,7 +8,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-5">
                 <h3 class="tm-text-primary mb-4 tm-footer-title">Our Links</h3>
                 <ul class="tm-footer-links pl-0">
-                    <li><a href="{{ route('home.index') }}">Home</a></li>
+                    <li><a href="{{ route('photo.index') }}">Photos</a></li>
                     <li><a href="{{ route('video.index') }}">Videos</a></li>
                     <li><a href="{{ route('about.index') }}">About</a></li>
                     <li><a href="{{ route('contact.index') }}">Contact</a></li>
@@ -30,7 +30,7 @@
                 Copyright 2024 {{ env('APP_NAME') }}. All rights reserved.
             </div>
             <div class="col-lg-4 col-md-5 col-12 px-5 text-right">
-                Designed by <a href="https://atiikmahmud.github.io/" class="tm-text-gray" rel="sponsored" target="_parent">Atik Mahmud</a>
+                Developed by <a href="https://atiikmahmud.github.io/" class="tm-text-gray" rel="sponsored" target="_parent">Atik Mahmud</a>
             </div>
         </div>
     </div>
