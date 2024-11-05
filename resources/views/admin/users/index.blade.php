@@ -10,9 +10,9 @@
                 <!-- Search -->
                 <div class="nav-item d-flex align-items-center desktop-search-view">
                     <i class="ri-search-line ri-22px me-2"></i>
-                    <form action="{{ route("admin.users.index") }}" method="GET">
-                        <input type="search" name="search" value="{{ $search }}" class="form-control border-0 shadow-none" placeholder="Search..."
-                            aria-label="Search..." />
+                    <form action="{{ route('admin.users.index') }}" method="GET">
+                        <input type="search" name="search" value="{{ $search }}"
+                            class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
                         <button type="submit" class="d-none">Submit</button>
                     </form>
                 </div>
@@ -72,12 +72,22 @@
                                                 <i class="ri-more-2-line"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="{{ route('admin.user.profile.view', ['id' => $user->id]) }}"><i
+                                                <a class="dropdown-item"
+                                                    href="{{ route('admin.user.profile.view', ['id' => $user->id]) }}"><i
                                                         class="ri-user-search-line me-1"></i> Details</a>
-                                                <a class="dropdown-item" href="{{ route('admin.user.profile.edit', ['id' => $user->id]) }}"><i
+                                                <a class="dropdown-item"
+                                                    href="{{ route('admin.user.profile.edit', ['id' => $user->id]) }}"><i
                                                         class="ri-pencil-line me-1"></i> Edit</a>
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="ri-delete-bin-6-line me-1"></i> Delete</a>
+                                                @if (Auth::user()->id !== $user->id && $user->role !== 'admin' && $user->id !== 1)
+                                                    <form action="{{ route('admin.user.profile.delete') }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="id" value="{{ $user->id }}">
+                                                        <button type="submit" class="dropdown-item"
+                                                            onclick="return confirm('Are you sure delete this user ?')"><i
+                                                                class="ri-delete-bin-6-line me-1"></i> Delete</button>
+                                                    </form>
+                                                @endif
                                             </div>
                                         </div>
                                     </td>

@@ -217,6 +217,19 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('success', 'User updated successfully!');
+        return redirect()->back()->with('success', 'User profile updated successfully!');
+    }
+
+    public function deleteUserProfile(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if (File::exists(public_path('admin-assets/img/avatars') . '/' . $user->image)) {
+            File::delete(public_path('admin-assets/img/avatars') . '/' . $user->image);
+        }
+
+        $user->delete();
+
+        return redirect()->back()->with('success', 'User profile deleted successfully!');
     }
 }
