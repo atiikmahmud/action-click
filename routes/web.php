@@ -55,4 +55,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::delete('/delete-user-profile', [UserController::class, 'deleteUserProfile'])->name('admin.user.profile.delete');
 
     Route::get('/photos', [AdminPhotoController::class, 'index'])->name('admin.photos.index');
+    Route::get('/add-photo', [AdminPhotoController::class, 'addPhoto'])->name('admin.photo.add');
+    Route::post('/store-photo', [AdminPhotoController::class, 'storePhoto'])->name('admin.photo.store');
 });

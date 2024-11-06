@@ -11,10 +11,13 @@
                 <div class="nav-item d-flex align-items-center desktop-search-view">
                     <i class="ri-search-line ri-22px me-2"></i>
                     <form action="{{ route('admin.users.index') }}" method="GET">
-                        <input type="search" name="search" value="{{ $search }}"
+                        <input type="text" name="search" value="{{ $search }}"
                             class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
                         <button type="submit" class="d-none">Submit</button>
                     </form>
+                    @if($search)
+                    <a href="{{ route('admin.users.index') }}"><i class="ri-delete-back-2-line"></i></a>
+                    @endif
                 </div>
                 <!-- /Search -->
                 <h5 class="card-header">

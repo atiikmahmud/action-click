@@ -20,6 +20,7 @@ class CreatePhotosTable extends Migration
             $table->unsignedBigInteger('view_count')->nullable();
             $table->string('tag')->nullable();
             $table->enum('status', ['new', 'approved', 'rejected'])->default('new');
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }
