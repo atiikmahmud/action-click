@@ -21,6 +21,7 @@ class CreatePhotosTable extends Migration
             $table->string('tag')->nullable();
             $table->enum('status', ['new', 'approved', 'rejected'])->default('new');
             $table->boolean('featured')->default(false);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

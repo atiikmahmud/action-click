@@ -16,7 +16,8 @@ class PhotoController extends Controller
         $search = $request->query('search');
         $photos = Photos::where(function ($query) use ($search) {
             $query->where('name', 'LIKE', "%{$search}%")->orWhere('tag', 'LIKE', "%{$search}%");
-        })->orderBy('created_at', 'DESC')->paginate(10);
+        })->with('user')->orderBy('created_at', 'DESC')->paginate(10);
+        
         return view('admin.photos.index', compact('title', 'photos', 'search'));
     }
 

@@ -27,7 +27,7 @@
                 </h5>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table id="image-table" class="table">
                     <thead>
                         <tr>
                             <th style="width: 5%">No.</th>
@@ -46,8 +46,12 @@
                                     <td>{{ $index + $photos->firstItem() }}</td>
 
                                     <td><img src="{{ $photo->image ? asset('admin-assets/img/photos/' . $photo->image) : asset('admin-assets/img/avatars/1.png') }}"
-                                            alt="{{ $photo->name }}" class="w-px-50 h-auto" style="margin-right: 5px"
-                                            data-bs-toggle="modal" data-bs-target="#{{ $photo->id }}" />
+                                            alt="{{ $photo->name }}" class="w-px-50 h-auto image-preview"
+                                            style="margin-right: 5px" data-filename="{{ $photo->name }}" data-tag="{{ $photo->tag }}" data-uploadon="{{ date('d M Y', strtotime($photo->created_at)) }}" data-uploadby="{{ $photo->user->name }}" data-status="{{ ucfirst($photo->status) }}
+                                                @if ($photo->status == 'new')
+                                                    (Need approval)
+                                                    {{-- <span class="text-primary">(Need approval)</span> --}}
+                                                @endif"/>
                                         <span>{{ $photo->name }}</span>
                                     </td>
                                     <td>{{ $photo->tag }}</td>
@@ -90,44 +94,6 @@
                                             </div>
                                         </div>
                                     </td>
-
-                                    <!-- Extra Large Modal -->
-                                    <div class="modal fade" id="{{ $photo->id }}" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-xl" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel4">
-                                                        {{ $photo->name }}
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row g-0">
-                                                        <div class="col-md-8">
-                                                            <img class="card-img rounded"
-                                                                src="{{ asset('admin-assets/img/photos/' . $photo->image) }}"
-                                                                alt="{{ $photo->name }}" />
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card-body">
-                                                                <p><strong>Title: </strong>{{ $photo->name }}</p>
-                                                                <p><strong>Tag: </strong>{{ $photo->tag }}</p>
-                                                                <p><strong>Date: </strong>{{ date('d M Y', strtotime($photo->created_at)) }}</p>
-                                                                <p><strong>Title: </strong>{{ $photo->name }}</p>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Approve</button>
-                                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Reject</button>
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </tr>
                             @endforeach
                         @else
@@ -137,6 +103,49 @@
                         @endif
                     </tbody>
                 </table>
+
+                <!-- Start Photo Modal -->
+                <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 id="modal-header" class="modal-title" id="exampleModalLabel4"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row g-0">
+                                    <div class="col-md-8">
+                                        <img id="modalImage" class="card-img rounded" src=""
+                                            alt="{{ $photo->name }}" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card-body">
+                                            <p id="title"></p>
+                                            <p id="tag"></p>
+                                            <p id="uploadon"></p>
+                                            <p id="uploadby"></p>
+                                            <p id="filename2"></p>
+                                            <p id="filesize"></p>
+                                            <p id="dimensions"></p>
+                                            <p id="status"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ route('admin.photos.index') }}" class="btn btn-outline-success"
+                                    >Approve</a>
+                                <button type="button" class="btn btn-outline-danger"
+                                    data-bs-dismiss="modal">Reject</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Photo Modal -->
+
                 <div class="mt-5">
                     {{ $photos->withQueryString()->links('vendor.pagination.default') }}
                 </div>
@@ -145,3 +154,66 @@
         <!-- End Basic Bootstrap Table -->
     </div>
 @endsection
+
+@push('scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // $('.image-preview').on('click', function() {
+            //     const imageUrl = $(this).attr('src');
+            //     $('#modalPhoto').attr('src', imageUrl)
+            //     const image = new Image();
+            //     image.src = imageUrl;
+            //     image.onload = function() {
+            //         const filename = imageUrl.split('/').pop();
+            //         const dimensions = `${image.width} x ${image.height}`;
+            //         const width = image.width;
+            //         const height = image.height;
+            //         const estimatedSizeInBytes = width * height * 3;
+            //         const filesize = estimatedSizeInBytes;
+
+            //         $("#filename").html("<strong>File name: </strong>" + filename);
+            //         $("#filesize").html("<strong>File size: </strong>" + filesize + " bytes");
+            //         $("#dimensions").html("<strong>Dimensions: </strong>" + dimensions);
+            //     };
+            // });
+
+            $('#image-table').on('click', '.image-preview', function() {
+                const imageUrl = $(this).attr('src');
+                const filename = $(this).data('filename');
+                const filename2 = imageUrl.split('/').pop();
+                const tag = $(this).data('tag');
+                const uploadon = $(this).data('uploadon');
+                const uploadby = $(this).data('uploadby');
+                const status = $(this).data('status');
+
+                // Set image source and filename in modal
+                $('#modalImage').attr('src', imageUrl);
+                $('#filename').text('Filename: ' + filename);
+                $('#modal-header').text(filename);
+                $("#title").html("<strong>Title: </strong>" + filename);
+                $("#tag").html("<strong>Tag: </strong>" + tag);
+                $("#uploadon").html("<strong>Uploaded on: </strong>" + uploadon);
+                $("#uploadby").html("<strong>Uploaded by: </strong>" + uploadby);
+                $("#filename2").html("<strong>File name: </strong>" + filename2);
+                $("#status").html("<strong>Status: </strong>" + status);
+
+                const image = new Image();
+                image.src = imageUrl;
+                image.onload = function() {
+                    const width = image.width;
+                    const height = image.height;
+                    const estimatedSizeInBytes = width * height * 3;
+                    const filesize = estimatedSizeInBytes;                    
+                    const dimensions = `${image.width} x ${image.height}`;
+
+                    $("#filesize").html("<strong>File size: </strong>" + filesize + " bytes");
+                    $("#dimensions").html("<strong>Dimensions: </strong>" + dimensions);
+                };
+
+                // Show modal
+                $('#imageModal').modal('show');
+            });
+        });
+    </script>
+@endpush
