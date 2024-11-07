@@ -47,11 +47,13 @@
 
                                     <td><img src="{{ $photo->image ? asset('admin-assets/img/photos/' . $photo->image) : asset('admin-assets/img/avatars/1.png') }}"
                                             alt="{{ $photo->name }}" class="w-px-50 h-auto image-preview"
-                                            style="margin-right: 5px" data-filename="{{ $photo->name }}" data-tag="{{ $photo->tag }}" data-uploadon="{{ date('d M Y', strtotime($photo->created_at)) }}" data-uploadby="{{ $photo->user->name }}" data-status="{{ ucfirst($photo->status) }}
-                                                @if ($photo->status == 'new')
-                                                    (Need approval)
-                                                    {{-- <span class="text-primary">(Need approval)</span> --}}
-                                                @endif"/>
+                                            style="margin-right: 5px" data-filename="{{ $photo->name }}"
+                                            data-tag="{{ $photo->tag }}"
+                                            data-uploadon="{{ date('d M Y', strtotime($photo->created_at)) }}"
+                                            data-uploadby="{{ $photo->user->name }}"
+                                            data-status="{{ ucfirst($photo->status) }}
+                                                @if ($photo->status == 'new') (Need approval)
+                                                    {{-- <span class="text-primary">(Need approval)</span> --}} @endif" />
                                         <span>{{ $photo->name }}</span>
                                     </td>
                                     <td>{{ $photo->tag }}</td>
@@ -134,8 +136,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a href="{{ route('admin.photos.index') }}" class="btn btn-outline-success"
-                                    >Approve</a>
+                                <button type="button" id="approve-loader" class="btn btn-outline-success"
+                                    data-bs-dismiss="modal">Approve</button>
                                 <button type="button" class="btn btn-outline-danger"
                                     data-bs-dismiss="modal">Reject</button>
                                 <button type="button" class="btn btn-outline-secondary"
@@ -159,25 +161,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(function() {
-            // $('.image-preview').on('click', function() {
-            //     const imageUrl = $(this).attr('src');
-            //     $('#modalPhoto').attr('src', imageUrl)
-            //     const image = new Image();
-            //     image.src = imageUrl;
-            //     image.onload = function() {
-            //         const filename = imageUrl.split('/').pop();
-            //         const dimensions = `${image.width} x ${image.height}`;
-            //         const width = image.width;
-            //         const height = image.height;
-            //         const estimatedSizeInBytes = width * height * 3;
-            //         const filesize = estimatedSizeInBytes;
-
-            //         $("#filename").html("<strong>File name: </strong>" + filename);
-            //         $("#filesize").html("<strong>File size: </strong>" + filesize + " bytes");
-            //         $("#dimensions").html("<strong>Dimensions: </strong>" + dimensions);
-            //     };
-            // });
-
+            // Modal image show and details show
             $('#image-table').on('click', '.image-preview', function() {
                 const imageUrl = $(this).attr('src');
                 const filename = $(this).data('filename');
@@ -204,7 +188,7 @@
                     const width = image.width;
                     const height = image.height;
                     const estimatedSizeInBytes = width * height * 3;
-                    const filesize = estimatedSizeInBytes;                    
+                    const filesize = estimatedSizeInBytes;
                     const dimensions = `${image.width} x ${image.height}`;
 
                     $("#filesize").html("<strong>File size: </strong>" + filesize + " bytes");
@@ -213,6 +197,17 @@
 
                 // Show modal
                 $('#imageModal').modal('show');
+            });
+
+            // Image approved and set loader then redirect route
+            $('#approve-loader').click(function() {
+                // Show the loader
+                $('#loader').show();
+
+                // Redirect to the desired route after a delay (e.g., 2 seconds)
+                setTimeout(function() {
+                    window.location.href = "{{ route('admin.photos.index') }}";
+                }, 2000);
             });
         });
     </script>

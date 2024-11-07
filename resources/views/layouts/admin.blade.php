@@ -8,6 +8,10 @@
 </head>
 
 <body>
+    <div id="loader" style="display: none;">
+        <img src="{{ asset('admin-assets/img/loader/approved.gif') }}" alt="Loading...">
+    </div>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
