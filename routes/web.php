@@ -57,4 +57,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('/photos', [AdminPhotoController::class, 'index'])->name('admin.photos.index');
     Route::get('/add-photo', [AdminPhotoController::class, 'addPhoto'])->name('admin.photo.add');
     Route::post('/store-photo', [AdminPhotoController::class, 'storePhoto'])->name('admin.photo.store');
+    Route::get('/approved-photo/{id}', [AdminPhotoController::class, 'photoApproved'])->name('admin.photo.approved');
+    Route::get('/rejected-photo/{id}', [AdminPhotoController::class, 'photoRejected'])->name('admin.photo.rejected');
 });

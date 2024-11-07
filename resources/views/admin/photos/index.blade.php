@@ -47,18 +47,19 @@
 
                                     <td><img src="{{ $photo->image ? asset('admin-assets/img/photos/' . $photo->image) : asset('admin-assets/img/avatars/1.png') }}"
                                             alt="{{ $photo->name }}" class="w-px-50 h-auto image-preview"
-                                            style="margin-right: 5px" data-filename="{{ $photo->name }}"
+                                            style="margin-right: 5px" 
+                                            data-id="{{ $photo->id }}" 
+                                            data-filename="{{ $photo->name }}"
                                             data-tag="{{ $photo->tag }}"
                                             data-uploadon="{{ date('d M Y', strtotime($photo->created_at)) }}"
                                             data-uploadby="{{ $photo->user->name }}"
                                             data-status="{{ ucfirst($photo->status) }}
-                                                @if ($photo->status == 'new') (Need approval)
-                                                    {{-- <span class="text-primary">(Need approval)</span> --}} @endif" />
+                                                @if ($photo->status == 'new') (Need approval) @endif" />
                                         <span>{{ $photo->name }}</span>
                                     </td>
                                     <td>{{ $photo->tag }}</td>
                                     <td>
-                                        @if ($photo->status == 'active')
+                                        @if ($photo->status == 'approved')
                                             <span class="badge rounded-pill bg-label-success me-1">Approved</span>
                                         @elseif ($photo->status == 'new')
                                             <span class="badge rounded-pill bg-label-primary me-1">New</span>
@@ -118,8 +119,7 @@
                             <div class="modal-body">
                                 <div class="row g-0">
                                     <div class="col-md-8">
-                                        <img id="modalImage" class="card-img rounded" src=""
-                                            alt="{{ $photo->name }}" />
+                                        <img id="modalImage" class="card-img rounded" src=""/>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="card-body">
@@ -137,9 +137,9 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="approve-loader" class="btn btn-outline-success"
-                                    data-bs-dismiss="modal">Approve</button>
-                                <button type="button" class="btn btn-outline-danger"
-                                    data-bs-dismiss="modal">Reject</button>
+                                    data-bs-dismiss="modal" data-id="">Approve</button>
+                                <button type="button" id="reject-loader" class="btn btn-outline-danger"
+                                    data-bs-dismiss="modal" data-id="">Reject</button>
                                 <button type="button" class="btn btn-outline-secondary"
                                     data-bs-dismiss="modal">Close</button>
                             </div>
@@ -163,6 +163,7 @@
         $(function() {
             // Modal image show and details show
             $('#image-table').on('click', '.image-preview', function() {
+                const id = $(this).data('id');
                 const imageUrl = $(this).attr('src');
                 const filename = $(this).data('filename');
                 const filename2 = imageUrl.split('/').pop();
@@ -172,6 +173,8 @@
                 const status = $(this).data('status');
 
                 // Set image source and filename in modal
+                $('#approve-loader').attr('data-id', id);
+                $('#reject-loader').attr('data-id', id);
                 $('#modalImage').attr('src', imageUrl);
                 $('#filename').text('Filename: ' + filename);
                 $('#modal-header').text(filename);
@@ -201,12 +204,27 @@
 
             // Image approved and set loader then redirect route
             $('#approve-loader').click(function() {
-                // Show the loader
+                const id = $(this).data('id');
+                var url = "{{ route('admin.photo.approved', ['id' => ':id']) }}";
+                url = url.replace(':id', id);                
+
                 $('#loader').show();
 
-                // Redirect to the desired route after a delay (e.g., 2 seconds)
                 setTimeout(function() {
-                    window.location.href = "{{ route('admin.photos.index') }}";
+                    window.location.href = url;
+                }, 2000);
+            });
+
+            // Image reject and set loader then redirect route
+            $('#reject-loader').click(function() {
+                const id = $(this).data('id');
+                var url = "{{ route('admin.photo.rejected', ['id' => ':id']) }}";
+                url = url.replace(':id', id);                
+
+                $('#loader').show();
+
+                setTimeout(function() {
+                    window.location.href = url;
                 }, 2000);
             });
         });

@@ -52,4 +52,22 @@ class PhotoController extends Controller
 
         return redirect()->route('admin.photos.index')->with('success', 'Photo uploaded successfully!');
     }
+
+    public function photoApproved($id)
+    {
+        $photo = Photos::find($id);
+        $photo->status = 'approved';
+        $photo->save();
+
+        return redirect()->back()->with('success', 'Photo approved successfully!');
+    }
+
+    public function photoRejected($id)
+    {
+        $photo = Photos::find($id);
+        $photo->status = 'rejected';
+        $photo->save();
+
+        return redirect()->back()->with('success', 'Photo rejected successfully!');
+    }
 }
