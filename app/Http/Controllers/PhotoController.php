@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photos;
 use Illuminate\Http\Request;
 
 class PhotoController extends Controller
@@ -12,9 +13,11 @@ class PhotoController extends Controller
         return view('photos.index', compact('title'));
     }
 
-    public function photoDetails()
+    public function photoDetails($id)
     {
-        $title = 'Photo Details';
-        return view('photos.photo-details', compact('title'));
+        $photo = Photos::with('user')->where('id', $id)->first();
+        $title = $photo->name . ' - Photo Details';
+        $related_photos = Photos::where('id', '!=', '$photo->id')->take(8)->get();
+        return view('photos.photo-details', compact('title', 'photo', 'related_photos'));
     }
 }

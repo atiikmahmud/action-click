@@ -17,7 +17,7 @@ class PhotoController extends Controller
         $photos = Photos::where(function ($query) use ($search) {
             $query->where('name', 'LIKE', "%{$search}%")->orWhere('tag', 'LIKE', "%{$search}%");
         })->with('user')->orderBy('created_at', 'DESC')->paginate(10);
-        
+
         return view('admin.photos.index', compact('title', 'photos', 'search'));
     }
 
@@ -31,19 +31,19 @@ class PhotoController extends Controller
     {
         $request->validate([
             'name'      => 'required|string|min:3|max:100',
-            'tag'       => 'required|string|min:3|max:100',            
+            'tag'       => 'required|string|min:3|max:100',
             'image'     => 'required|mimes:png,jpg,jpeg|max:2048'
         ]);
 
         $photo = new Photos();
         $photo->name     = $request->name;
         $photo->tag    = $request->tag;
-        
+
         $current_timestamp = Carbon::now()->timestamp;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = $request->name. '_' .$current_timestamp . '.' . $image->extension();
+            $imageName = $request->name . '_' . $current_timestamp . '.' . $image->extension();
             $image->move(public_path('admin-assets/img/photos'), $imageName);
             $photo->image = $imageName;
         }
@@ -69,5 +69,19 @@ class PhotoController extends Controller
         $photo->save();
 
         return redirect()->back()->with('success', 'Photo rejected successfully!');
+    }
+
+    public function photoFeatured($id)
+    {
+        $photo = Photos::find($id);
+        if ($photo->featured == 0) {
+            $photo->featured = 1;
+            $photo->save();
+            return redirect()->back()->with('success', 'Photo has been featured!');
+        } else {
+            $photo->featured = 0;
+            $photo->save();
+            return redirect()->back()->with('success', 'Photo has been removed from featured photo!');
+        }
     }
 }

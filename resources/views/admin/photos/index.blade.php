@@ -47,10 +47,8 @@
 
                                     <td><img src="{{ $photo->image ? asset('admin-assets/img/photos/' . $photo->image) : asset('admin-assets/img/avatars/1.png') }}"
                                             alt="{{ $photo->name }}" class="w-px-50 h-auto image-preview"
-                                            style="margin-right: 5px" 
-                                            data-id="{{ $photo->id }}" 
-                                            data-filename="{{ $photo->name }}"
-                                            data-tag="{{ $photo->tag }}"
+                                            style="margin-right: 5px" data-id="{{ $photo->id }}"
+                                            data-filename="{{ $photo->name }}" data-tag="{{ $photo->tag }}"
                                             data-uploadon="{{ date('d M Y', strtotime($photo->created_at)) }}"
                                             data-uploadby="{{ $photo->user->name }}"
                                             data-status="{{ ucfirst($photo->status) }}
@@ -69,11 +67,17 @@
                                     </td>
                                     <td>
                                         @if ($photo->featured == 1)
-                                            <span class="badge rounded-pill bg-label-success me-1"><i
-                                                    class="ri-star-fill"></i></span>
+                                            <a href="{{ route('admin.photo.featured', ['id' => $photo->id]) }}">
+                                                <span class="badge rounded-pill bg-label-success me-1">
+                                                    <i class="ri-star-fill"></i>
+                                                </span>
+                                            </a>
                                         @else
-                                            <span class="badge rounded-pill bg-label-danger me-1"><i
-                                                    class="ri-star-line"></i></span>
+                                            <a href="{{ route('admin.photo.featured', ['id' => $photo->id]) }}">
+                                                <span class="badge rounded-pill bg-label-danger me-1">
+                                                    <i class="ri-star-line"></i>
+                                                </span>
+                                            </a>
                                         @endif
                                     </td>
                                     <td>{{ date('d M Y', strtotime($photo->created_at)) }}</td>
@@ -119,7 +123,7 @@
                             <div class="modal-body">
                                 <div class="row g-0">
                                     <div class="col-md-8">
-                                        <img id="modalImage" class="card-img rounded" src=""/>
+                                        <img id="modalImage" class="card-img rounded" src="" />
                                     </div>
                                     <div class="col-md-4">
                                         <div class="card-body">
@@ -206,7 +210,7 @@
             $('#approve-loader').click(function() {
                 const id = $(this).data('id');
                 var url = "{{ route('admin.photo.approved', ['id' => ':id']) }}";
-                url = url.replace(':id', id);                
+                url = url.replace(':id', id);
 
                 $('#loader').show();
 
@@ -219,7 +223,7 @@
             $('#reject-loader').click(function() {
                 const id = $(this).data('id');
                 var url = "{{ route('admin.photo.rejected', ['id' => ':id']) }}";
-                url = url.replace(':id', id);                
+                url = url.replace(':id', id);
 
                 $('#loader').show();
 

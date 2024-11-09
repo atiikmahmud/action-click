@@ -27,7 +27,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/photos', [PhotoController::class, 'index'])->name('photo.index');
-Route::get('/photo-details', [PhotoController::class, 'photoDetails'])->name('photo.details');
+Route::get('/photo-details/{id}', [PhotoController::class, 'photoDetails'])->name('photo.details');
 
 Route::get('/videos', [VideoController::class, 'index'])->name('video.index');
 Route::get('/video-details', [VideoController::class, 'videoDetails'])->name('video.details');
@@ -59,4 +59,5 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::post('/store-photo', [AdminPhotoController::class, 'storePhoto'])->name('admin.photo.store');
     Route::get('/approved-photo/{id}', [AdminPhotoController::class, 'photoApproved'])->name('admin.photo.approved');
     Route::get('/rejected-photo/{id}', [AdminPhotoController::class, 'photoRejected'])->name('admin.photo.rejected');
+    Route::get('/photo-featured/{id}', [AdminPhotoController::class, 'photoFeatured'])->name('admin.photo.featured');
 });
