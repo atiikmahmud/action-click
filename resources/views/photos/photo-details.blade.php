@@ -32,6 +32,7 @@
                             <p id="filesize"></p>
                             <p id="dimensions"><strong>Dimensions: </strong><span class="tm-text-primary">1920x1080</span>
                             </p>
+                            <input type="hidden" id="site-name" value="{{ env('APP_NAME') }}">
                         </div>
                     </div>
                     <div class="">
@@ -98,10 +99,12 @@
 
         $(function() {
             $('#download-btn').click(function() {
+                var siteName = $('#site-name').val();
+                var siteName = siteName.replace(/\s+/g, '_');         
                 var imageUrl = $('#main-image').attr('src');
                 var a = document.createElement('a');
                 a.href = imageUrl;
-                a.download = 'Action_Click_'+imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
+                a.download = siteName+' '+imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
