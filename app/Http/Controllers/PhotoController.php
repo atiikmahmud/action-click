@@ -10,7 +10,8 @@ class PhotoController extends Controller
     public function index()
     {
         $title = 'Photos';
-        return view('photos.index', compact('title'));
+        $photos = Photos::orderBy('created_at', 'DESC')->get();
+        return view('photos.index', compact('title', 'photos'));
     }
 
     public function photoDetails($id)
@@ -20,7 +21,7 @@ class PhotoController extends Controller
         $photo->view_count += $view; 
         $photo->save();
         $title = $photo->name . ' - Photo Details';
-        $related_photos = Photos::where('id', '!=', '$photo->id')->take(8)->get();
+        $related_photos = Photos::where('id', '!=', $photo->id)->where('name', '<>', $photo->name)->take(8)->get();
         return view('photos.photo-details', compact('title', 'photo', 'related_photos'));
     }
 }
