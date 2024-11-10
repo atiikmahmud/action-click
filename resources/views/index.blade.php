@@ -19,6 +19,10 @@
             </h2>
         </div>
         <div class="row tm-mb-40 tm-gallery">
+            @php
+                $count = count($featured_photos);
+                $photoCount = 8 - $count;
+            @endphp
             @foreach ($featured_photos as $item)
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                     <figure class="effect-ming tm-video-item">
@@ -35,6 +39,24 @@
                     </div>
                 </div>
             @endforeach
+            @if ($photoCount > 0)                
+                @for ($i = 1; $i <= $photoCount; $i++)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                        <figure class="effect-ming tm-video-item">
+                            <img src="{{ asset('admin-assets/img/backgrounds/upload-photo.png') }}" alt="Demo image"
+                                class="img-fluid">
+                            <figcaption class="d-flex align-items-center justify-content-center">
+                                <h2>Demo image</h2>
+                                <a href="#">View more</a>
+                            </figcaption>
+                        </figure>
+                        <div class="d-flex justify-content-between tm-text-gray">
+                            <span class="tm-text-gray-light">No date</span>
+                            <span>0 views</span>
+                        </div>
+                    </div>
+                @endfor                
+            @endif
         </div>
         <!-- End Featured Photos Section -->
 
