@@ -7,6 +7,7 @@ use App\Models\Photos;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PhotoController extends Controller
 {
@@ -37,7 +38,8 @@ class PhotoController extends Controller
 
         $photo = new Photos();
         $photo->name     = $request->name;
-        $photo->tag    = $request->tag;
+        $photo->tag      = $request->tag;
+        $photo->user_id  = Auth::id();
 
         $current_timestamp = Carbon::now()->timestamp;
 

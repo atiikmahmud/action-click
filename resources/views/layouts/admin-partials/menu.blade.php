@@ -23,8 +23,8 @@
                 <div>Photos</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if ($title == 'Videos' || $title == 'Upload New Video') active @endif">
+            <a href="{{ route('admin.videos.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ri-movie-line"></i>
                 <div>Videos</div>
             </a>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\PhotoController as AdminPhotoController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VideoController as AdminVideoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -60,4 +61,11 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('/approved-photo/{id}', [AdminPhotoController::class, 'photoApproved'])->name('admin.photo.approved');
     Route::get('/rejected-photo/{id}', [AdminPhotoController::class, 'photoRejected'])->name('admin.photo.rejected');
     Route::get('/photo-featured/{id}', [AdminPhotoController::class, 'photoFeatured'])->name('admin.photo.featured');
+
+    Route::get('/videos', [AdminVideoController::class, 'index'])->name('admin.videos.index');
+    Route::get('/add-video', [AdminVideoController::class, 'addVideo'])->name('admin.video.add');
+    Route::post('/store-video', [AdminVideoController::class, 'storeVideo'])->name('admin.video.store');
+    Route::get('/approved-video/{id}', [AdminVideoController::class, 'videoApproved'])->name('admin.video.approved');
+    Route::get('/rejected-video/{id}', [AdminVideoController::class, 'videoRejected'])->name('admin.video.rejected');
+    Route::get('/video-featured/{id}', [AdminVideoController::class, 'videoFeatured'])->name('admin.video.featured');
 });
