@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{ $index + $videos->firstItem() }}</td>
 
-                                    <td><img src="{{ asset('admin-assets/img/avatars/1.png') }}"
+                                    <td><img src="{{ asset('admin-assets/img/backgrounds/upload-video.png') }}"
                                             alt="{{ $video->name }}" class="w-px-50 h-auto image-preview"
                                             style="margin-right: 5px" data-id="{{ $video->id }}"
                                             data-filename="{{ $video->name }}" data-tag="{{ $video->tag }}"

@@ -20,7 +20,7 @@ class PhotoController extends Controller
         $view = 1;
         $photo->view_count += $view; 
         $photo->save();
-        $title = $photo->name . ' - Photo Details';
+        $title = 'Photo Details';
         $related_photos = Photos::whereNotIn('id', [$photo->id])->whereNotIn('tag',[$photo->tag])->orderByRaw('RAND()')->take(8)->get();
         return view('photos.photo-details', compact('title', 'photo', 'related_photos'));
     }

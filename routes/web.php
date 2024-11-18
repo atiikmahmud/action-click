@@ -31,7 +31,7 @@ Route::get('/photos', [PhotoController::class, 'index'])->name('photo.index');
 Route::get('/photo-details/{id}', [PhotoController::class, 'photoDetails'])->name('photo.details');
 
 Route::get('/videos', [VideoController::class, 'index'])->name('video.index');
-Route::get('/video-details', [VideoController::class, 'videoDetails'])->name('video.details');
+Route::get('/video-details/{id}', [VideoController::class, 'videoDetails'])->name('video.details');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
